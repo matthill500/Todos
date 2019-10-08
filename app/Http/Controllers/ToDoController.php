@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class ToDoController extends Controller
 {
+      public function __construct(){
+        $this->middleware('auth');
+      }
     /**
      * Display a listing of the resource.
      *
@@ -99,7 +102,7 @@ class ToDoController extends Controller
     {
         //$rules
         $rules = [
-          'title' => "required|string|unique:todos,title,{$id}|min:2|max:191",
+          'title' => "required|string|unique:todos,title,{$id}|min:3|max:191",
           'body' => "required|string|min:5|max:1000",
         ];
         $messages = [
@@ -132,4 +135,5 @@ class ToDoController extends Controller
         ->route('todos.index')
         ->with('status','deleted the selected Todo!');
     }
+
 }

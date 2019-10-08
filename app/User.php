@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
+//class User extends Authenticatable implements mustVerifyEmail
 {
     use Notifiable;
 
@@ -36,4 +37,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function todos(){
+      return $this->hasMany('App\Todo','user_id');
+    }
 }

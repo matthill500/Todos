@@ -6,7 +6,7 @@
         @forelse($todos as $todo)
             <li class="list-group-item my-2">
                 <h5>{{ $todo->title }}</h5>
-                <p>{{ Str::limit($todo->body,10) }}</p>
+                <p>{{ Str::limit($todo->body,17) }}</p>
                 <small class="float-right">{{ $todo->created_at->diffForHumans() }}</small>
                 <a href="{{route('todos.show',$todo->id)}}">Read More</a>
             </li>
